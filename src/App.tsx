@@ -1,25 +1,15 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Outlet } from "react-router-dom";
+import Nav from "./components/Nav";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main className="overflow-x-hidden bg-bodyBg">
+      <Nav />
+      <section className="min-h-screen mt-[112px] md:mt-32 lg:mt-20 w-full md:max-w-[780px]  lg:max-w-[1100px] mx-auto lg:px-0">
+        <Outlet />
+      </section>
+    </main>
   );
 }
 
