@@ -1,7 +1,7 @@
-import React from "react";
+//external package
 import { NavLink, Link } from "react-router-dom";
-import logo from "../assets/images/logo2.png";
 
+//icons
 import { VscHome } from "react-icons/vsc";
 import { TiGroupOutline, TiGroup, TiHome } from "react-icons/ti";
 import { BsGlobe, BsPen, BsPenFill } from "react-icons/bs";
@@ -13,9 +13,18 @@ import {
   FaUser,
 } from "react-icons/fa";
 
+//redux
+import { useAppDispatch, useAppSelector } from "../hooks/redux-hooks";
+import { openModal, closeModal, modalState } from "../slices/appSlice";
+
+//components
+import logo from "../assets/images/logo2.png";
 import NavItem from "./NavItem";
 
 function LScreenNav() {
+  const modal = useAppSelector(modalState);
+  console.log(modal);
+  const dispatch = useAppDispatch();
   return (
     <div className=" w-full max-w-[1100px] h-14  justify-between gap-5 mx-auto items-center hidden lg:flex">
       <Link to="/" className="shrink-0 mr-7">
@@ -83,7 +92,10 @@ function LScreenNav() {
           <BsGlobe />
         </NavLink>
       </div>
-      <button className="inline-block py-2 px-5 text-sm rounded-full bg-mainColor text-white capitalize">
+      <button
+        onClick={() => dispatch(openModal())}
+        className="inline-block py-2 px-5 text-sm rounded-full bg-mainColor text-white capitalize"
+      >
         add question/post
       </button>
     </div>

@@ -14,7 +14,7 @@ interface PostProp {
 }
 function Post({ data }: PostProp) {
   return (
-    <article className="w-full bg-white p-5 hover:bg-hoverColor">
+    <article className="w-full bg-white p-5 hover:bg-hoverColor mb-3">
       <div className="flex items-center gap-x-3 mb-3">
         <figure className="h-[32px] w-[32px] rounded-full">
           <img
@@ -36,7 +36,7 @@ function Post({ data }: PostProp) {
         </div>
       </div>
       <Link to={``}>
-        <h3 className="font-bold text-textColor font-base mb-3 hover:underline">
+        <h3 className="font-bold text-textColor capitalize font-base mb-3 hover:underline">
           {data.title}
         </h3>
       </Link>

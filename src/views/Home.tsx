@@ -2,9 +2,10 @@ import React from "react";
 
 //components
 import Post from "../components/Post";
+import Question from "../components/Question";
 
 //interface
-import { PostData } from "../interfaces/interfaces";
+import { PostData, QuestionData } from "../interfaces/interfaces";
 
 import avatar from "../assets/images/User-avatar.png";
 
@@ -23,6 +24,26 @@ function Home() {
     upvotes: { count: 20, users: ["3", "8"] },
     downvotes: { count: 0, users: ["3", "8"] },
     replies: [{ name: "John", id: "1", text: "Nice one" }],
+    image:
+      "https://images.unsplash.com/photo-1618594261772-9b95aa1d31a0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dHJhdmVsJTIwdG8lMjB1a3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+  };
+  const postData2: PostData = {
+    author: "Joan Mgbemene",
+    bio: "Student ambassador, university of toronto",
+    title:
+      "how to get a good student job in canada without hassle within 3 days of arrival.",
+    content:
+      "He travels between SpaceX and Tesla quite a bit - and one of the few major luxuries he owns is an executive jet that gets him from A to B whenever he needs it.",
+    upvotes: { count: 60, users: ["3", "8"] },
+    downvotes: { count: 0, users: ["3", "8"] },
+    replies: [{ name: "John", id: "1", text: "Nice one" }],
+    image:
+      "https://images.unsplash.com/photo-1568792666129-01aeffaab120?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8dHJhdmVsJTIwdG8lMjB1a3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+  };
+  const questionData: QuestionData = {
+    title: "How can i fast track my visa application",
+    answers: [postData],
+    follows: [{ user: "1" }],
   };
   return (
     <section className="w-full max-w-[568px] mx-auto">
@@ -60,8 +81,12 @@ function Home() {
           </div>
         </div>
       </article>
-      <section className="w-full">
+      <section className="w-full mb-2">
         <Post data={postData} />
+        <Post data={postData2} />
+      </section>
+      <section className="w-full mb-2">
+        <Question data={questionData} />
       </section>
     </section>
   );

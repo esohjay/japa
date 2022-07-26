@@ -8,3 +8,8 @@ export interface PostData {
   replies: { id: string; name: string; text: string }[];
   image?: string;
 }
+export interface QuestionData {
+  title: string;
+  answers: PostData[];
+  follows: { user: string }[];
+}
