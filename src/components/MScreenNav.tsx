@@ -13,7 +13,14 @@ import {
 } from "react-icons/fa";
 import NavItem from "./NavItem";
 
+//redux
+import { useAppDispatch } from "../hooks/redux-hooks";
+import { openModal } from "../slices/appSlice";
+import SearchBar from "./SearchBar";
+
 function MScreenNav() {
+  const dispatch = useAppDispatch();
+
   return (
     <div className=" w-full  hidden md:block lg:hidden">
       <div className="w-full bg-mainColor">
@@ -22,31 +29,7 @@ function MScreenNav() {
             <img src={logo} alt="logo" />
           </Link>
           <div className="flex h-full justify-between items-center gap-3">
-            <div className="relative">
-              <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-                <svg
-                  aria-hidden="true"
-                  className="w-5 h-5 text-gray-500 dark:text-gray-400"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                  ></path>
-                </svg>
-              </div>
-              <input
-                type="search"
-                id="default-search"
-                className="block p-2 pl-10 w-full text-sm text-white bg-white rounded-sm border  "
-                placeholder="Search japariansHQ"
-              />
-            </div>
+            <SearchBar screen="md" />
           </div>
           <NavLink
             to={`lang`}
@@ -55,6 +38,7 @@ function MScreenNav() {
             <BsGlobe />
           </NavLink>
           <button
+            onClick={() => dispatch(openModal(1))}
             className="inline-block py-2 px-5 text-sm border-none rounded-full bg-mainColor text-white  capitalize
         hover:border hover:border-white"
           >

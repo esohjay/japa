@@ -15,11 +15,19 @@ import {
 } from "react-icons/fa";
 import NavItem from "./NavItem";
 
+//redux
+import { useAppDispatch } from "../hooks/redux-hooks";
+import { openModal, openSearchScreen } from "../slices/appSlice";
+
 function SScreenNav() {
+  const dispatch = useAppDispatch();
   return (
     <div className="w-full  md:hidden">
       <div className="w-full bg-mainColor h-14 flex px-5 justify-between gap-5 items-center">
-        <button className="text-white text-sm capitalize gap-2 flex items-center">
+        <button
+          onClick={() => dispatch(openSearchScreen())}
+          className="text-white text-sm capitalize gap-2 flex items-center"
+        >
           <FaSearch /> search
         </button>
         <Link to="/" className="h-10 w-28">
@@ -29,7 +37,10 @@ function SScreenNav() {
             className="h-full w-full max-h-full max-w-full"
           />
         </Link>
-        <button className="text-white text-sm capitalize gap-2 flex items-center">
+        <button
+          onClick={() => dispatch(openModal(1))}
+          className="text-white text-sm capitalize gap-2 flex items-center"
+        >
           <FaRegQuestionCircle /> add
         </button>
       </div>

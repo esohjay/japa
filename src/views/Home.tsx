@@ -14,7 +14,12 @@ import { FaRegQuestionCircle } from "react-icons/fa";
 import { BsPen } from "react-icons/bs";
 import { MdPostAdd } from "react-icons/md";
 
+//redux
+import { useAppDispatch, useAppSelector } from "../hooks/redux-hooks";
+import { openModal, openSearchScreen } from "../slices/appSlice";
+
 function Home() {
+  const dispatch = useAppDispatch();
   const postData: PostData = {
     author: "Olusoji Daramola",
     bio: "Student of salford university, manchester",
@@ -58,14 +63,19 @@ function Home() {
           </figure>
           <input
             type="text"
-            disabled
             placeholder="What do you want to ask or share?"
-            className="block rounded-full bg-sectionBg w-full py-1 px-3 cursor-pointer "
+            className="block rounded-full bg-sectionBg w-full py-1 px-3 cursor-text 
+            focus:border focus:border-mainColor focus:outline-none"
+            readOnly={true}
+            onClick={() => dispatch(openModal(2))}
           />
         </form>
         <div className="grid grid-cols-3 place-items-center">
           <div className="w-full ">
-            <button className="p-2  text-lightText rounded-full hover:bg-hoverColor  w-full text-center text-sm capitalize gap-2 justify-center flex items-center">
+            <button
+              onClick={() => dispatch(openModal(1))}
+              className="p-2  text-lightText rounded-full hover:bg-hoverColor  w-full text-center text-sm capitalize gap-2 justify-center flex items-center"
+            >
               <FaRegQuestionCircle /> <span>ask</span>
             </button>
           </div>
@@ -75,7 +85,10 @@ function Home() {
             </button>
           </div>
           <div className="border-l lg:border-l-0 w-full">
-            <button className="p-2  text-lightText rounded-full hover:bg-hoverColor w-full text-center text-sm justify-center capitalize gap-2 flex items-center">
+            <button
+              onClick={() => dispatch(openModal(2))}
+              className="p-2  text-lightText rounded-full hover:bg-hoverColor w-full text-center text-sm justify-center capitalize gap-2 flex items-center"
+            >
               <MdPostAdd /> post
             </button>
           </div>
